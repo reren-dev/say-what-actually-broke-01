@@ -11,15 +11,21 @@ import os
 OUTPUT_PATH = "/output/entry.txt"
 
 # The failure, in plain words: what actually broke.
-FAILURE = "Your file wasn't saved — the disk is full"
-# The twist: the software knew and said nothing.
-CONFESSION = "and the app knew all along. It just let you keep typing."
+FAILURE = "Your file wasn't saved — the disk is full,"
+# The twist: the software knew before the user even started, and
+# let them do the work anyway.
+CONFESSION = "and the app knew before you started typing. It let you finish the paragraph anyway."
 # What to do next.
 FIX = "Free some space, then save again."
 
 
 def compose_error() -> str:
-    """Assemble the one-line error message from its three parts."""
+    """Assemble the one-line error message from its three parts.
+
+    The parts are joined with single spaces; the punctuation inside
+    each part carries the pauses, so the line reads like something
+    a person would actually say out loud.
+    """
     parts = [FAILURE, CONFESSION, FIX]
     line = " ".join(part.strip() for part in parts)
     return line.strip()
